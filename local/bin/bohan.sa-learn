@@ -1,0 +1,9 @@
+#! /bin/sh
+
+exec sa-learn "$@" \
+	--spam ~/Maildir/.Junk/ \
+	--spam ~/Maildir/.INBOX.Spam/ \
+	--ham  ~/Maildir/.INBOX.Ham/ \
+	--ham  ~/Maildir/.INBOX.Ham.Archives.$(($(date +%Y))) \
+	--ham  ~/Maildir/.INBOX.Ham.Archives.$(($(date +%Y) - 1)) \
+	1> /dev/null
