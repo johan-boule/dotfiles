@@ -1,0 +1,16 @@
+#! /bin/bash
+
+set -eu &&
+
+set -m
+(
+	trap 'kill 0' EXIT
+
+	while true; do
+		sleep 1m
+		qdbus org.freedesktop.ScreenSaver /ScreenSaver SimulateUserActivity 1> /dev/null
+	done &
+
+	sleep 5s
+	xtrlock
+)
