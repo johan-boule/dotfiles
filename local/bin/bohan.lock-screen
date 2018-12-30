@@ -11,6 +11,5 @@ set -m
 		qdbus org.freedesktop.ScreenSaver /ScreenSaver SimulateUserActivity 1> /dev/null
 	done &
 
-	sleep 5s
 	xtrlock
 )
