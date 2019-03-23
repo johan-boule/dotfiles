@@ -117,3 +117,10 @@ if ! shopt -oq posix; then
 fi
 
 eval "$(direnv hook bash)"
+
+bohan_command_failed_hook() {
+    local previous_exit_status=$?
+    test $previous_exit_status -eq 0 || echo -e '\033[4;31m\007command failed with exit code '$previous_exit_status'\033[0m'
+    return $previous_exit_status
+}
+PROMPT_COMMAND="bohan_command_failed_hook;$PROMPT_COMMAND"
