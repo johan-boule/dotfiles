@@ -17,7 +17,7 @@ shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=10000
-HISTFILESIZE=20000
+HISTFILESIZE=-1 # not limit
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -120,7 +120,9 @@ eval "$(direnv hook bash)"
 
 bohan_command_failed_hook() {
     local previous_exit_status=$?
-    test $previous_exit_status -eq 0 || echo -e '\033[4;31m\007command failed with exit code '$previous_exit_status'\033[0m'
+    test $previous_exit_status -eq 0 || echo -e '\e[4;31m\007command failed with exit code '$previous_exit_status'\e[0m'
     return $previous_exit_status
 }
 PROMPT_COMMAND="bohan_command_failed_hook;$PROMPT_COMMAND"
+
+PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
