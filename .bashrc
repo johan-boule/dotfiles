@@ -120,7 +120,7 @@ eval "$(direnv hook bash)"
 
 bohan_command_failed_hook() {
     local previous_exit_status=$?
-    test $previous_exit_status -eq 0 || echo -e '\e[4;31m\007command failed with exit code '$previous_exit_status'\e[0m'
+    test $previous_exit_status -eq 0 || echo -e '\e[4;1;31m\007command failed with exit code '$previous_exit_status'\e[0m'
     return $previous_exit_status
 }
 PROMPT_COMMAND="bohan_command_failed_hook;$PROMPT_COMMAND"
