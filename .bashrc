@@ -125,4 +125,9 @@ bohan_command_failed_hook() {
 }
 PROMPT_COMMAND="bohan_command_failed_hook;$PROMPT_COMMAND"
 
-PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
+bohan_history_append_hook() {
+    local previous_exit_status=$?
+    history -a
+    return $previous_exit_status
+}
+PROMPT_COMMAND="bohan_history_append_hook;$PROMPT_COMMAND"
