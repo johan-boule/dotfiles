@@ -4,3 +4,5 @@ alias mv='mv -i'
 alias ln='ln -i'
 
 alias clearback="echo -ne '\ec\e[3J'" # clear screen and scrollback
+
+alias tree='tree -A'
